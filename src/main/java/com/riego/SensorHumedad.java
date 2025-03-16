@@ -1,6 +1,5 @@
 package com.riego;
 
-
 import java.util.Random;
 
 public class SensorHumedad extends Sensor {
@@ -12,8 +11,10 @@ public class SensorHumedad extends Sensor {
 
     @Override
     public void medir() {
-        valor = new Random().nextInt(100);  // Simula humedad del suelo (0-100%)
-        System.out.println("🌱 Sensor de Humedad: " + valor + "%");
+        Random random = new Random();
+        valor = random.nextInt(100);  // Simula un valor entre 0 y 100%
+        System.out.println("Sensor de Humedad: " + valor + "%");
+
         notificarObservadores();
     }
 
@@ -21,3 +22,4 @@ public class SensorHumedad extends Sensor {
         return valor < umbral;
     }
 }
+

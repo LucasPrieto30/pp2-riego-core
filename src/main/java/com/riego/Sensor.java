@@ -13,10 +13,10 @@ public abstract class Sensor {
     public void eliminarObservador(Observer o) {
         observadores.remove(o);
     }
-    
-    public void notificarObservadores() {
+
+    protected void notificarObservadores() {
         for (Observer o : observadores) {
-            o.actualizar();
+            o.actualizar(this);
         }
     }
 

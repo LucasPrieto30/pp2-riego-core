@@ -26,3 +26,4 @@ public class DispositivoRiego implements Observer {
         System.out.println("💧 Riego DESACTIVADO");
     }
 }
+
