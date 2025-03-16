@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+E:\Facultad\5° año\ProyectoProfesional2\pp2-riego-core\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1896386436.index
