@@ -4,4 +4,7 @@
 		<item key="project_location" value="E:\Facultad\5° año\ProyectoProfesional2\pp2-riego-core\core"/>
 		<item key="use_default_location" value="true"/>
 	</section>
+	<section name="org.eclipse.buildship.ui.wizard.project.import">
+		<item key="project_location" value="E:\Facultad\5° año\ProyectoProfesional2\pp2-riego-core"/>
+	</section>
 </section>
