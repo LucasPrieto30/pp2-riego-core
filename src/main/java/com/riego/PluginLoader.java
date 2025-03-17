@@ -36,8 +36,8 @@ public class PluginLoader {
                     System.out.println("Intentando cargar: " + className);
 
                     try {
-                        Class<?> pluginClass = classLoader.loadClass("ext2." + className);
-                        
+                        // Class<?> pluginClass = classLoader.loadClass(className);
+                        Class<?> pluginClass  = Class.forName(className, true, classLoader);
                         if (PluginSensor.class.isAssignableFrom(pluginClass)) {
                             PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
                             sensor.inicializar();
