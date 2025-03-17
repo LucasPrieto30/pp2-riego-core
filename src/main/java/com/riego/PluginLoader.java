@@ -19,25 +19,36 @@ public class PluginLoader {
         }
 
         try {
-            //ClassLoader classLoader = PluginSensor.class.getClassLoader();
+        	URL pluginUrl = pluginDir.toURI().toURL();
+            URLClassLoader classLoader = new URLClassLoader(new URL[]{pluginUrl}, PluginSensor.class.getClassLoader());
 
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
                     String className = file.getName().replace(".class", "");
                     System.out.println("Intentando cargar: " + className);
 
-                    Class<?> pluginClass = Class.forName(className);
+                    try {
+                        Class<?> pluginClass = classLoader.loadClass(className);
 
-                    if (PluginSensor.class.isAssignableFrom(pluginClass)) {
-                        PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
-                        sensor.inicializar();
-                        sensores.add(sensor);
-                        System.out.println("Sensor dinámico cargado: " + className);
-                    } else {
-                        System.out.println(className + " no implementa PluginSensor.");
+                        if (PluginSensor.class.isAssignableFrom(pluginClass)) {
+                            PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
+                            sensor.inicializar();
+                            sensores.add(sensor);
+                            System.out.println("Sensor dinámico cargado: " + className);
+                        } else {
+                            System.out.println( className + " no implementa PluginSensor.");
+                        }
+                    } catch (ClassNotFoundException e) {
+                        System.out.println("No se encontró la clase: " + className);
+                    } catch (Exception e) {
+                        System.out.println(" Error al cargar la clase: " + className);
+                        e.printStackTrace();
                     }
                 }
             }
+
+            classLoader.close();  // 📌 Cerrar el classLoader cuando terminamos
+
         } catch (Exception e) {
             e.printStackTrace();
         }
