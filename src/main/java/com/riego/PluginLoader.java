@@ -20,8 +20,10 @@ public class PluginLoader {
 
         try {
             URL pluginUrl = pluginDir.toURI().toURL();
+            URLClassLoader classLoader = null;
+            classLoader = URLClassLoader.newInstance(new URL[]{pluginUrl});
             
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{pluginUrl}, PluginSensor.class.getClassLoader());
+           // (new URL[]{pluginUrl}, PluginSensor.class.getClassLoader()) ;
 
             System.out.println("Rutas de búsqueda en classLoader:");
             for (URL url : classLoader.getURLs()) {
@@ -30,7 +32,7 @@ public class PluginLoader {
 
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
-                    String className = file.getName().replace(".class", "");
+                    String className = file.getName().replace("/", ".").replace(".class", "");
                     System.out.println("Intentando cargar: " + className);
 
                     try {
