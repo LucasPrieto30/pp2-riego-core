@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PluginLoader {
-    private static final String PLUGIN_PATH = "plugins/";  //Carpeta de plugins
+    private static final String PLUGIN_PATH = "lib/plugins/";  //Carpeta de plugins
 
     public static List<PluginSensor> cargarPlugins() {
         List<PluginSensor> sensores = new ArrayList<>();
