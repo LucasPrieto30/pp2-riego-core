@@ -14,7 +14,7 @@ public class PluginLoader {
         File pluginDir = new File(PLUGIN_PATH);
 
         if (!pluginDir.exists() || !pluginDir.isDirectory()) {
-            System.out.println("⚠️ No se encontró la carpeta de plugins.");
+            System.out.println("No se encontró la carpeta de plugins.");
             return sensores;
         }
 
@@ -24,7 +24,7 @@ public class PluginLoader {
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
                     String className = file.getName().replace(".class", "");
-                    System.out.println("🔍 Intentando cargar: " + className);
+                    System.out.println("Intentando cargar: " + className);
 
                     Class<?> pluginClass = classLoader.loadClass(className);
 
@@ -32,9 +32,9 @@ public class PluginLoader {
                         PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
                         sensor.inicializar();
                         sensores.add(sensor);
-                        System.out.println("✅ Sensor dinámico cargado: " + className);
+                        System.out.println("Sensor dinámico cargado: " + className);
                     } else {
-                        System.out.println("⚠️ " + className + " no implementa PluginSensor.");
+                        System.out.println(className + " no implementa PluginSensor.");
                     }
                 }
             }

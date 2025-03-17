@@ -27,14 +27,14 @@ public class DispositivoRiego implements Observer {
     public void activar() {
         if (!activo) {
             activo = true;
-            System.out.println("💧 Riego ACTIVADO");
+            System.out.println("Riego ACTIVADO");
         }
     }
 
     public void desactivar() {
         if (activo) {
             activo = false;
-            System.out.println("💧 Riego DESACTIVADO");
+            System.out.println("Riego DESACTIVADO");
         }
     }
 

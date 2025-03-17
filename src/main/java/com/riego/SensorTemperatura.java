@@ -5,7 +5,7 @@ public class SensorTemperatura implements PluginSensor { //DEBERIA IR FUERA DEL 
 
     @Override
     public void inicializar() {
-        System.out.println("🌡️ Sensor de Temperatura cargado.");
+        System.out.println("Sensor de Temperatura cargado.");
     }
 
     @Override
