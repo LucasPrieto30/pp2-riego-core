@@ -26,7 +26,7 @@ public class PluginLoader {
                     String className = file.getName().replace(".class", "");
                     System.out.println("🔍 Intentando cargar: " + className);
 
-                    Class<?> pluginClass = classLoader.loadClass("com.riego.plugin." + className);
+                    Class<?> pluginClass = classLoader.loadClass(className);
 
                     if (PluginSensor.class.isAssignableFrom(pluginClass)) {
                         PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
