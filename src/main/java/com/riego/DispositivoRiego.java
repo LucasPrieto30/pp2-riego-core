@@ -13,11 +13,14 @@ public class DispositivoRiego implements Observer {
     }
 
     @Override
-    public void actualizar(SensorHumedad sensor) {
-        if (sensor.necesitaRiego() && !activo) {
-            activar();
-        } else if (!sensor.necesitaRiego() && activo) {
-            desactivar();
+    public void actualizar(Sensor sensor) {  // 📌 Ahora recibe un Sensor genérico
+        if (sensor instanceof SensorHumedad) {
+            SensorHumedad sensorHumedad = (SensorHumedad) sensor;
+            if (sensorHumedad.necesitaRiego() && !activo) {
+                activar();
+            } else if (!sensorHumedad.necesitaRiego() && activo) {
+                desactivar();
+            }
         }
     }
 
