@@ -19,14 +19,14 @@ public class PluginLoader {
         }
 
         try {
-            ClassLoader classLoader = PluginSensor.class.getClassLoader();
+            //ClassLoader classLoader = PluginSensor.class.getClassLoader();
 
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
                     String className = file.getName().replace(".class", "");
                     System.out.println("Intentando cargar: " + className);
 
-                    Class<?> pluginClass = classLoader.loadClass(className);
+                    Class<?> pluginClass = Class.forName(className);
 
                     if (PluginSensor.class.isAssignableFrom(pluginClass)) {
                         PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
