@@ -19,8 +19,14 @@ public class PluginLoader {
         }
 
         try {
-        	URL pluginUrl = pluginDir.toURI().toURL();
+            URL pluginUrl = pluginDir.toURI().toURL();
+            
             URLClassLoader classLoader = new URLClassLoader(new URL[]{pluginUrl}, PluginSensor.class.getClassLoader());
+
+            System.out.println("Rutas de búsqueda en classLoader:");
+            for (URL url : classLoader.getURLs()) {
+                System.out.println("   : " + url);
+            }
 
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
@@ -29,25 +35,23 @@ public class PluginLoader {
 
                     try {
                         Class<?> pluginClass = classLoader.loadClass(className);
-
+                        
                         if (PluginSensor.class.isAssignableFrom(pluginClass)) {
                             PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
                             sensor.inicializar();
                             sensores.add(sensor);
                             System.out.println("Sensor dinámico cargado: " + className);
                         } else {
-                            System.out.println( className + " no implementa PluginSensor.");
+                            System.out.println("" + className + " no implementa PluginSensor.");
                         }
                     } catch (ClassNotFoundException e) {
-                        System.out.println("No se encontró la clase: " + className);
-                    } catch (Exception e) {
-                        System.out.println(" Error al cargar la clase: " + className);
+                        System.out.println("ERROR: No se encontró la clase " + className);
                         e.printStackTrace();
                     }
                 }
             }
 
-            classLoader.close();  // 📌 Cerrar el classLoader cuando terminamos
+            classLoader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
