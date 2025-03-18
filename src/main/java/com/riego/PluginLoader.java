@@ -23,8 +23,6 @@ public class PluginLoader {
             URLClassLoader classLoader = null;
             classLoader = URLClassLoader.newInstance(new URL[]{pluginUrl});
             
-           // (new URL[]{pluginUrl}, PluginSensor.class.getClassLoader()) ;
-
             System.out.println("Rutas de búsqueda en classLoader:");
             for (URL url : classLoader.getURLs()) {
                 System.out.println("   : " + url);
@@ -39,7 +37,6 @@ public class PluginLoader {
                         Class<?> pluginClass  = Class.forName(className, true, classLoader);
                         if (Sensor.class.isAssignableFrom(pluginClass)) {
                             Sensor sensor = (Sensor) pluginClass.getDeclaredConstructor().newInstance();
-                            sensor.inicializar();
                             sensores.add(sensor);
                             System.out.println("Sensor dinámico cargado: " + className);
                         } else {
