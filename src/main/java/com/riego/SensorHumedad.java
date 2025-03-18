@@ -18,6 +18,7 @@ public class SensorHumedad extends Sensor {
         notificarObservadores();
     }
 
+    @Override
     public boolean necesitaRiego() {
         return valor < umbral;
     }

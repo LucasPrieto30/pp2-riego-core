@@ -25,4 +25,6 @@ public abstract class Sensor {
     public int getValor() {
         return valor;
     }
+    
+    public abstract boolean necesitaRiego();
 }
