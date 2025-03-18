@@ -9,8 +9,8 @@ import java.util.List;
 public class PluginLoader {
     private static final String PLUGIN_PATH = "plugins/";  //Carpeta de plugins
 
-    public static List<PluginSensor> cargarPlugins() {
-        List<PluginSensor> sensores = new ArrayList<>();
+    public static List<Sensor> cargarPlugins() {
+        List<Sensor> sensores = new ArrayList<>();
         File pluginDir = new File(PLUGIN_PATH);
 
         if (!pluginDir.exists() || !pluginDir.isDirectory()) {
@@ -37,8 +37,8 @@ public class PluginLoader {
 
                     try {
                         Class<?> pluginClass  = Class.forName(className, true, classLoader);
-                        if (PluginSensor.class.isAssignableFrom(pluginClass)) {
-                            PluginSensor sensor = (PluginSensor) pluginClass.getDeclaredConstructor().newInstance();
+                        if (Sensor.class.isAssignableFrom(pluginClass)) {
+                            Sensor sensor = (Sensor) pluginClass.getDeclaredConstructor().newInstance();
                             sensor.inicializar();
                             sensores.add(sensor);
                             System.out.println("Sensor dinámico cargado: " + className);
