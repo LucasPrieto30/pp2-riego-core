@@ -1,11 +1,16 @@
 package com.riego;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Timer;
+import java.util.TimerTask;
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valor;
 
+    public Sensor() {
+        iniciarMedicionesAutomaticas();
+    }
+    
     public void agregarObservador(Observer o) {
         observadores.add(o);
     }
@@ -27,4 +32,15 @@ public abstract class Sensor {
     }
     
     public abstract boolean necesitaRiego();
+    
+ // 📌 Hace que el sensor se actualice automáticamente cada 3 segundos
+    private void iniciarMedicionesAutomaticas() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                medir();
+            }
+        }, 0, 5000);
+    }
 }
