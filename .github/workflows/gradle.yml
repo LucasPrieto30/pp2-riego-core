@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
@@ -30,13 +30,19 @@ jobs:
         run: ./gradlew build --info
 
       - name: Archive Test Results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: build/reports/tests/test/
 
+      - name: Download Test Results
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results
+          path: test-results 
+
       - name: Publish Test Results as GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build/reports/tests/test/
