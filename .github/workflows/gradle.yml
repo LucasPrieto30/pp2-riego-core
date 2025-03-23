@@ -44,5 +44,5 @@ jobs:
       - name: Publish Test Results as GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           publish_dir: ./build/reports/tests/test/
