@@ -8,6 +8,7 @@ public class DispositivoRiego implements Observer {
 
     @Override
     public void actualizar(Sensor sensor) {
+    	System.out.println("Actualizacion recibida de " + sensor.getClass().getSimpleName() + " valor: " + sensor.getValor());
         if (sensor.necesitaRiego()) {
             activar();
         } else {
