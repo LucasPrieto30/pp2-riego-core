@@ -6,7 +6,7 @@ public class SensorHumedad extends Sensor {
     private int umbral;
 
     public SensorHumedad(int umbral) {
-        this.umbral = umbral;
+    	super(umbral);
     }
 
     @Override

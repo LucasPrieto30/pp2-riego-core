@@ -6,8 +6,10 @@ import java.util.TimerTask;
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valor;
+    private int umbral;
 
-    public Sensor() {
+    public Sensor(int umbral) {
+    	this.umbral = umbral;
         iniciarMedicionesAutomaticas();
     }
     
@@ -29,6 +31,10 @@ public abstract class Sensor {
     
     public int getValor() {
         return valor;
+    }
+    
+    public int getUmbral() {
+        return umbral;
     }
     
     public abstract boolean necesitaRiego();
