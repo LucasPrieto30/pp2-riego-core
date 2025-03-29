@@ -40,7 +40,7 @@ public class PluginLoader {
                             sensores.add(sensor);
                             System.out.println("Sensor dinámico cargado: " + className);
                         } else {
-                            System.out.println("" + className + " no implementa PluginSensor.");
+                            System.out.println("" + className + " no implementa Sensor.");
                         }
                     } catch (ClassNotFoundException e) {
                         System.out.println("ERROR: No se encontró la clase " + className);
