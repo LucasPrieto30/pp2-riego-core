@@ -43,7 +43,7 @@ public class PluginLoader {
                     String className = file.getName().replace("/", ".").replace(".class", "");
                     System.out.println("Intentando cargar: " + className);
                     int umbral = config.getOrDefault(className, 50);
-                    
+                    System.out.println("umbral decubierto: " + umbral);
                     try {
                         Class<?> pluginClass  = Class.forName(className, true, classLoader);
                         if (Sensor.class.isAssignableFrom(pluginClass)) {
