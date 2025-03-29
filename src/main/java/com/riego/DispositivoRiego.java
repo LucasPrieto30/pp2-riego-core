@@ -9,9 +9,13 @@ public class DispositivoRiego implements Observer {
     @Override
     public void actualizar(Sensor sensor) {
     	System.out.println("Actualizacion recibida de " + sensor.getClass().getSimpleName() + " valor: " + sensor.getValor());
+    	System.out.println(sensor.necesitaRiego());
         if (sensor.necesitaRiego()) {
+        	System.out.println("entro al if activar");
             activar();
         } else {
+        	System.out.println("entro al else desactivar");
+
             desactivar();
         }
     }
@@ -19,19 +23,20 @@ public class DispositivoRiego implements Observer {
     public void activar() {
         if (!activo) {
             activo = true;
-            System.out.println("Riego ACTIVADO");
         }
+        System.out.println("Riego ACTIVADO");
     }
 
     public void desactivar() {
         if (activo) {
             activo = false;
-            System.out.println("Riego DESACTIVADO");
         }
+        System.out.println("Riego DESACTIVADO");
     }
 
     public boolean estaActivo() {
         return activo;
+        
     }
 }
 
