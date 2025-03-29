@@ -7,8 +7,8 @@ public class SmartWater {
     private DispositivoRiego dispositivo;
     private List<Sensor> sensores = new ArrayList<>();
 
-    public SmartWater(SensorHumedad sensorHumedad) {
-        this.dispositivo = new DispositivoRiego(sensorHumedad);
+    public SmartWater() {
+        this.dispositivo = new DispositivoRiego();
     }
 
     public void agregarSensor(Sensor sensor) {
@@ -23,4 +23,5 @@ public class SmartWater {
     public DispositivoRiego getDispositivo() {
         return dispositivo;
     }
+
 }

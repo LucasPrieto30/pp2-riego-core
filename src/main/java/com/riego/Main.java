@@ -1,25 +1,44 @@
 package com.riego;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== Iniciando Sistema de Riego ===");
+        System.out.println("Iniciando Sistema de Riego");
         
-        PluginLoader.cargarPlugins();
+        SmartWater smartWater = new SmartWater();
+
         
-        SensorHumedad sensor = new SensorHumedad(40);
-        DispositivoRiego riego = new DispositivoRiego(sensor);
+        List<Sensor> sensores = PluginLoader.cargarPlugins();
+        if (sensores.isEmpty()) {
+            System.out.println("No se encontraron sensores en la carpeta de plugins.");
+            return;
+        }
 
-        sensor.agregarObservador(riego);
+        for (Sensor sensor : sensores) {
+        	smartWater.agregarSensor(sensor);
+            System.out.println(" Sensor agregado: " + sensor.getClass().getSimpleName());
+        }
 
+        // Simula mediciones automáticas cada 3 segundos
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
             public void run() {
-                sensor.medir();
+                System.out.println(" Medición automática:");
+                for (Sensor sensor : smartWater.getSensores()) {
+                    sensor.medir();
+                    System.out.println("   → " + sensor.getClass().getSimpleName() + ": " + sensor.getValor());
+                }
+
+                if (smartWater.getDispositivo().estaActivo()) {
+                    System.out.println(" El riego está ACTIVADO");
+                } else {
+                    System.out.println(" El riego está DESACTIVADO");
+                }
+
+                System.out.println();
             }
         }, 0, 3000);
     }
 }
-
