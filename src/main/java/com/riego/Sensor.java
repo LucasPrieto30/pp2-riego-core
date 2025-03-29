@@ -6,7 +6,7 @@ import java.util.TimerTask;
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valor;
-    private int umbral;
+    protected int umbral;
 
     public Sensor(int umbral) {
     	this.umbral = umbral;
