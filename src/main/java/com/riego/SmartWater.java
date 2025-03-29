@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmartWater {
-
-    private SensorHumedad sensorHumedad;
     private DispositivoRiego dispositivo;
     private List<Sensor> sensores = new ArrayList<>();
 
     public SmartWater(SensorHumedad sensorHumedad) {
-        this.sensorHumedad = sensorHumedad;
         this.dispositivo = new DispositivoRiego(sensorHumedad);
-        sensores.add(sensorHumedad);
     }
 
     public void agregarSensor(Sensor sensor) {
@@ -26,9 +22,5 @@ public class SmartWater {
 
     public DispositivoRiego getDispositivo() {
         return dispositivo;
-    }
-
-    public SensorHumedad getSensorHumedad() {
-        return sensorHumedad;
     }
 }

@@ -5,12 +5,6 @@ import com.riego.SensorHumedad;
 
 public class DispositivoRiego implements Observer {
     private boolean activo = false;
-    private SensorHumedad sensor;
-
-    public DispositivoRiego(SensorHumedad sensor) {
-        this.sensor = sensor;
-        this.sensor.agregarObservador(this);  // 📌 Se suscribe como observador del sensor
-    }
 
     @Override
     public void actualizar(Sensor sensor) {
