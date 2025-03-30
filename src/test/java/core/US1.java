@@ -24,7 +24,7 @@ public class US1 {
     }
     
     @Test
-    public void ca1ActivaRiegoCorrectamente() {
+    public void ca1ActivarRiego() {
         smartWater.conectarSensorADispositivoRiego(sensor);
 
         sensor.medir(); //Mide 1
