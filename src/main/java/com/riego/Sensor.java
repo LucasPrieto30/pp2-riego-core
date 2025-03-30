@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valor;

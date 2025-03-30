@@ -17,11 +17,10 @@ public class Main {
         }
 
         for (Sensor sensor : sensores) {
-        	smartWater.agregarSensor(sensor);
+        	smartWater.conectarSensorADispositivoRiego(sensor);
             System.out.println(" Sensor agregado: " + sensor.getClass().getSimpleName());
         }
 
-        // Simula mediciones automáticas cada 3 segundos
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -31,7 +30,7 @@ public class Main {
                     System.out.println("   → " + sensor.getClass().getSimpleName() + ": " + sensor.getValor());
                 }
 
-                if (smartWater.getDispositivo().estaActivo()) {
+                if (smartWater.getDispositivoRiego().estaActivo()) {
                     System.out.println(" El riego está ACTIVADO");
                 } else {
                     System.out.println(" El riego está DESACTIVADO");

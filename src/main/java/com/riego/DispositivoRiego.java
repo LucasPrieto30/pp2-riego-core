@@ -1,8 +1,5 @@
 package com.riego;
 
-import com.riego.Observer;
-import com.riego.SensorHumedad;
-
 public class DispositivoRiego implements Observer {
     private boolean activo = false;
 

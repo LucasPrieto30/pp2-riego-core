@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmartWater {
-    private DispositivoRiego dispositivo;
+    private DispositivoRiego dispositivoRiego;
     private List<Sensor> sensores = new ArrayList<>();
 
     public SmartWater() {
-        this.dispositivo = new DispositivoRiego();
+        this.dispositivoRiego = new DispositivoRiego();
     }
 
-    public void agregarSensor(Sensor sensor) {
+    public void conectarSensorADispositivoRiego(Sensor sensor) {
         sensores.add(sensor);
-        sensor.agregarObservador(dispositivo);
+        sensor.agregarObservador(dispositivoRiego);
     }
 
     public List<Sensor> getSensores() {
         return sensores;
     }
 
-    public DispositivoRiego getDispositivo() {
-        return dispositivo;
+    public DispositivoRiego getDispositivoRiego() {
+        return dispositivoRiego;
     }
 
 }
