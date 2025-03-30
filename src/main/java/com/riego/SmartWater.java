@@ -10,6 +10,12 @@ public class SmartWater {
     public SmartWater() {
         this.dispositivoRiego = new DispositivoRiego();
     }
+    
+    public List<Sensor> buscarSensores(){
+    	List <Sensor> sensoresCargados = PluginLoader.cargarPlugins();
+
+        return sensoresCargados;
+    }
 
     public void conectarSensorADispositivoRiego(Sensor sensor) {
         sensores.add(sensor);
