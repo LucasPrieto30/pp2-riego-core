@@ -10,17 +10,17 @@ public class SensorHumedadMock extends Sensor {
 
     @Override
     public void medir() {
-        valor = 1;
+    	valorMedido = 1;
         notificarObservadores();
     }
 
     @Override
-    public int getValor() {
-        return valor;
+    public int getValorMedido() {
+        return valorMedido;
     }
 
     @Override
     public boolean necesitaRiego() {
-        return valor < umbral;
+        return valorMedido < umbral;
     }
 }

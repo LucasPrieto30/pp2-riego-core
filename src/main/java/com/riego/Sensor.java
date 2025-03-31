@@ -6,12 +6,11 @@ import java.util.TimerTask;
 
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
-    protected int valor;
+    protected int valorMedido;
     protected int umbral;
 
     public Sensor(int umbral) {
     	this.umbral = umbral;
-        iniciarMedicionesAutomaticas();
     }
     
     public void agregarObservador(Observer o) {
@@ -30,8 +29,8 @@ public abstract class Sensor {
 
     public abstract void medir();
     
-    public int getValor() {
-        return valor;
+    public int getValorMedido() {
+        return valorMedido;
     }
     
     public int getUmbral() {
@@ -40,8 +39,7 @@ public abstract class Sensor {
     
     public abstract boolean necesitaRiego();
     
- // 📌 Hace que el sensor se actualice automáticamente cada 3 segundos
-    private void iniciarMedicionesAutomaticas() {
+    public void iniciarMediciones() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override

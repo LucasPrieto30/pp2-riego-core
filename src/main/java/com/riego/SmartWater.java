@@ -21,7 +21,7 @@ public class SmartWater {
         sensores.add(sensor);
         sensor.agregarObservador(dispositivoRiego);
     }
-
+    
     public List<Sensor> getSensores() {
         return sensores;
     }

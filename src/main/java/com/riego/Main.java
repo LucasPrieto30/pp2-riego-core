@@ -27,7 +27,7 @@ public class Main {
                 System.out.println(" Medición automática:");
                 for (Sensor sensor : smartWater.getSensores()) {
                     sensor.medir();
-                    System.out.println("   → " + sensor.getClass().getSimpleName() + ": " + sensor.getValor());
+                    System.out.println("   → " + sensor.getClass().getSimpleName() + ": " + sensor.getValorMedido());
                 }
 
                 if (smartWater.getDispositivoRiego().estaActivo()) {

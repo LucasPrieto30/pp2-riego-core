@@ -26,18 +26,22 @@ public class US1 {
     @Test
     public void ca1ActivarRiego() {
         smartWater.conectarSensorADispositivoRiego(sensor);
-
-        sensor.medir(); //Mide 1
         
-        assertTrue(sensor.getValor() < umbralActivacion);
+        sensor.iniciarMediciones(); //siempre mide 1
+        
+        int valorMedido = sensor.getValorMedido();
+        
+        assertTrue(valorMedido < umbralActivacion);
         assertTrue(dispositivoRiego.estaActivo());
     }
 
     @Test
     public void ca2SensorNoConectadoNoActivaRiego() {
-        sensor.medir(); //Esta por debajo del umbral pero no notifica al dispositivo
+        sensor.iniciarMediciones(); //Esta por debajo del umbral pero no notifica al dispositivo
+        
+        int valorMedido = sensor.getValorMedido();
 
-        assertTrue(sensor.getValor() < umbralActivacion);
+        assertTrue(valorMedido < umbralActivacion);
         assertFalse(dispositivoRiego.estaActivo());
     }
 }
