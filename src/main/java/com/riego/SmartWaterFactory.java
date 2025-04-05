@@ -2,6 +2,7 @@ package com.riego;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,21 +28,16 @@ public class SmartWaterFactory {
     }
 
     private static Map<String, Integer> cargarConfiguracionDeUmbrales(String ruta) {
-    	 Map<String, Integer> umbrales = new HashMap<>();
-
-         try {
-             String contenido = Files.readString(new File(ruta).toPath());
-             JSONObject json = new JSONObject(contenido);
-
-             for (String clave : json.keySet()) {
-                 int valor = json.getInt(clave);
-                 umbrales.put(clave, valor);
-             }
-
-         } catch (Exception e) {
-             System.out.println("Error al cargar umbrales desde JSON: " + e.getMessage());
-         }
-
-         return umbrales;
+    	Map<String, Integer> umbrales = new HashMap<>();
+        try {
+            String json = new String(Files.readAllBytes(Paths.get(ruta)));
+            JSONObject obj = new JSONObject(json);
+            for (String key : obj.keySet()) {
+            	umbrales.put(key, obj.getInt(key));
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo leer la configuración. Se usarán valores por defecto.");
+        }
+        return umbrales;
     }
 }
