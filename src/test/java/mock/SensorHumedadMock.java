@@ -1,5 +1,6 @@
 package mock;
 
+import com.riego.EstrategiaEvaluacion;
 import com.riego.Sensor;
 
 public class SensorHumedadMock extends Sensor {
@@ -13,6 +14,11 @@ public class SensorHumedadMock extends Sensor {
     @Override
     public int getValorMedido() {
         return valorMedido;
+    }
+
+    @Override
+    public EstrategiaEvaluacion getEstrategiaEvaluacion() {
+        return (valor, umbral) -> valor < umbral;
     }
 
 }
