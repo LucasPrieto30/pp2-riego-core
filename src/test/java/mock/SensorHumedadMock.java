@@ -7,7 +7,7 @@ public class SensorHumedadMock extends Sensor {
 
     @Override
     public void medir() {
-    	valorMedido = 1;
+    	valorMedido = 2;
         notificarObservadores();
     }
 

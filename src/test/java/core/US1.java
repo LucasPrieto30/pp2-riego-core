@@ -4,42 +4,43 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
+import com.riego.Aspersor;
+import com.riego.EvaluadorRiego;
 import com.riego.SmartWater;
 import mock.SensorHumedadMock;
 
 public class US1 {
-
-	private SmartWater smartWater;
-	private int umbralActivacion;
-	private SensorHumedadMock sensor;
 	
+    private SensorHumedadMock sensor;
+    private Aspersor aspersor;
+
     @BeforeEach
     public void setUp() {
-//    	smartWater = new SmartWater();
-//    	umbralActivacion = 2;
-//    	sensor = new SensorHumedadMock(umbralActivacion);
-//    	dispositivoRiego = smartWater.getDispositivoRiego();
+        sensor = new SensorHumedadMock(); // mide siempre 2
+        aspersor = new Aspersor();
     }
     
     @Test
-    public void ca1ActivarRiego() {
-//        smartWater.conectarSensorADispositivoRiego(sensor);
-//        
-//        sensor.iniciarMediciones(); //siempre mide 1
-//        
-//        int valorMedido = sensor.getValorMedido();
-//        
-//        assertTrue(valorMedido < umbralActivacion);
-//        assertTrue(dispositivoRiego.estaActivo());
+    public void ca1RiegoActivado() throws InterruptedException {
+    	int umbralActivacion = 3;
+    	EvaluadorRiego evaluador = new EvaluadorRiego(sensor, umbralActivacion);
+        SmartWater smartWater = new SmartWater(List.of(evaluador), aspersor);
+
+        Thread.sleep(5000); // esperar a que mida el sensor
+        
+        assertTrue(smartWater.riegoActivado());
     }
 
     @Test
-    public void ca2SensorNoConectadoNoActivaRiego() {
-//        sensor.iniciarMediciones(); //Esta por debajo del umbral pero no notifica al dispositivo
-//        
-//        int valorMedido = sensor.getValorMedido();
-//
-//        assertTrue(valorMedido < umbralActivacion);
-//        assertFalse(dispositivoRiego.estaActivo());
+    public void ca2RiegoNoActivado() throws InterruptedException {
+    	int umbralActivacion = 1;
+    	EvaluadorRiego evaluador = new EvaluadorRiego(sensor, umbralActivacion);
+        SmartWater smartWater = new SmartWater(List.of(evaluador), aspersor);
+
+        Thread.sleep(5000);
+        
+        assertFalse(smartWater.riegoActivado());
     }
 }

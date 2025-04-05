@@ -34,6 +34,10 @@ public class SmartWater implements Observer {
         return aspersor;
     }
     
+    public boolean riegoActivado() {
+    	return aspersor.estaActivo();
+    }
+    
     public List<Sensor> getSensores() {
         return evaluadores.stream().map(EvaluadorRiego::getSensor).collect(Collectors.toList());
     }
