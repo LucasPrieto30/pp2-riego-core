@@ -21,7 +21,7 @@ public class SmartWaterFactory {
             evaluadores.add(new EvaluadorRiego(sensor, umbral));
         }
 
-        Aspersor aspersor = new Aspersor(evaluadores);
+        Aspersor aspersor = new Aspersor();
         return new SmartWater(evaluadores, aspersor);
     }
 
