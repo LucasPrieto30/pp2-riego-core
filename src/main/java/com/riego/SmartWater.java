@@ -2,6 +2,7 @@ package com.riego;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SmartWater {
 	
@@ -19,5 +20,9 @@ public class SmartWater {
 
     public Aspersor getAspersor() {
         return aspersor;
+    }
+    
+    public List<Sensor> getSensores() {
+        return evaluadores.stream().map(EvaluadorRiego::getSensor).collect(Collectors.toList());
     }
 }
