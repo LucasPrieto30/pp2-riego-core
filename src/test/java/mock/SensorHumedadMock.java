@@ -19,8 +19,4 @@ public class SensorHumedadMock extends Sensor {
         return valorMedido;
     }
 
-    @Override
-    public boolean necesitaRiego() {
-        return valorMedido < umbral;
-    }
 }
