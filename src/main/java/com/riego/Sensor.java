@@ -7,12 +7,7 @@ import java.util.TimerTask;
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valorMedido;
-    protected int umbral;
-
-    public Sensor(int umbral) {
-    	this.umbral = umbral;
-    }
-    
+   
     public void agregarObservador(Observer o) {
         observadores.add(o);
     }
