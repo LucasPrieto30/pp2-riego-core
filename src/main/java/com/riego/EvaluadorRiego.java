@@ -3,10 +3,12 @@ package com.riego;
 public class EvaluadorRiego {
     private final Sensor sensor;
     private final int umbral;
+    private final EstrategiaEvaluacion estrategia;
 
     public EvaluadorRiego(Sensor sensor, int umbral) {
         this.sensor = sensor;
         this.umbral = umbral;
+        this.estrategia = sensor.getEstrategiaEvaluacion();
     }
 
     public Sensor getSensor() {
@@ -14,6 +16,6 @@ public class EvaluadorRiego {
     }
 
     public boolean necesitaRiego() {
-        return sensor.getValorMedido() < umbral;
+    	return estrategia.necesitaRiego(sensor.getValorMedido(), umbral);
     }
 }

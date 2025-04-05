@@ -28,6 +28,8 @@ public abstract class Sensor {
         return valorMedido;
     }
     
+    public abstract EstrategiaEvaluacion getEstrategiaEvaluacion();
+    
     public void iniciarMediciones() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
