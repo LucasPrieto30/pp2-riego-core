@@ -6,9 +6,9 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PluginLoader {
+public class SensorDiscoverer {
     
-    public static List<Sensor> cargarPlugins(String path) {
+    public static List<Sensor> discover(String path) {
         List<Sensor> sensores = new ArrayList<>();
         File pluginDir = new File(path);
         

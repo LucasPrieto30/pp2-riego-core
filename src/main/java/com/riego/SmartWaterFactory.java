@@ -1,6 +1,4 @@
 package com.riego;
-
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -12,7 +10,7 @@ import org.json.JSONObject;
 public class SmartWaterFactory {
 
     public static SmartWater crear(String rutaPlugins, String rutaConfig) {
-        List<Sensor> sensores = PluginLoader.cargarPlugins(rutaPlugins);
+        List<Sensor> sensores = SensorDiscoverer.discover(rutaPlugins);
         Map<String, Integer> umbrales = cargarConfiguracionDeUmbrales(rutaConfig);
 
         List<EvaluadorRiego> evaluadores = new ArrayList<>();
