@@ -14,6 +14,7 @@ public class SmartWater {
         this.aspersor = aspersor;
 
         for (EvaluadorRiego e : evaluadores) {
+        	e.getSensor().iniciarMediciones();
             e.getSensor().agregarObservador(aspersor);
         }
     }
