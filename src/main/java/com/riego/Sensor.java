@@ -33,12 +33,6 @@ public abstract class Sensor {
         return valorMedido;
     }
     
-    public int getUmbral() {
-        return umbral;
-    }
-    
-    public abstract boolean necesitaRiego();
-    
     public void iniciarMediciones() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

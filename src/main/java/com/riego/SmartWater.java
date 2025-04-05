@@ -4,30 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmartWater {
-    private DispositivoRiego dispositivoRiego;
-    private List<Sensor> sensores = new ArrayList<>();
+	
+	private List<EvaluadorRiego> evaluadores;
+    private Aspersor aspersor;
 
-    public SmartWater() {
-        this.dispositivoRiego = new DispositivoRiego();
-    }
-    
-    public List<Sensor> buscarSensores(){
-    	List <Sensor> sensoresCargados = PluginLoader.cargarPlugins();
+    public SmartWater(List<EvaluadorRiego> evaluadores, Aspersor aspersor) {
+        this.evaluadores = evaluadores;
+        this.aspersor = aspersor;
 
-        return sensoresCargados;
-    }
-
-    public void conectarSensorADispositivoRiego(Sensor sensor) {
-        sensores.add(sensor);
-        sensor.agregarObservador(dispositivoRiego);
-    }
-    
-    public List<Sensor> getSensores() {
-        return sensores;
+        for (EvaluadorRiego e : evaluadores) {
+            e.getSensor().agregarObservador(aspersor);
+        }
     }
 
-    public DispositivoRiego getDispositivoRiego() {
-        return dispositivoRiego;
+    public Aspersor getAspersor() {
+        return aspersor;
     }
-
 }
