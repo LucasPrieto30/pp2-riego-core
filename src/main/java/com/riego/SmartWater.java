@@ -41,6 +41,6 @@ public class SmartWater implements Observer {
     }
     
     public List<Sensor> getSensores() {
-        return (List<Sensor>) evaluadores.keySet();
+        return new ArrayList<>(evaluadores.keySet());
     }
 }
