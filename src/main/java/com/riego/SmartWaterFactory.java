@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.json.JSONObject;
 
 public class SmartWaterFactory {
@@ -13,16 +15,14 @@ public class SmartWaterFactory {
         List<Sensor> sensores = SensorDiscoverer.discover(rutaPlugins);
         Map<String, Integer> umbrales = cargarConfiguracionDeUmbrales(rutaConfig);
 
-        List<EvaluadorRiego> evaluadores = new ArrayList<>();
-        
-        for (Sensor sensor : sensores) {
-        	String tipo = sensor.getClass().getSimpleName();
-            int umbral = umbrales.getOrDefault(tipo, 50);
-            evaluadores.add(new EvaluadorRiego(sensor, umbral));
-        }
+        Map<Sensor, EvaluadorRiego> mapaEvaluadores = sensores.stream()
+        	    .collect(Collectors.toMap(
+        	        sensor -> sensor,
+        	        sensor -> new EvaluadorRiego(sensor, umbrales.get(sensor.getClass().getSimpleName()))
+        	    ));
 
         Aspersor aspersor = new Aspersor();
-        return new SmartWater(evaluadores, aspersor);
+        return new SmartWater(mapaEvaluadores, aspersor);   
     }
 
     private static Map<String, Integer> cargarConfiguracionDeUmbrales(String ruta) {

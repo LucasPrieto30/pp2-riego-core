@@ -8,7 +8,7 @@ public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valorMedido;
    
-    public abstract void medir();
+    protected abstract int medir();
     
     public int getValorMedido() {
     	return valorMedido;
@@ -36,7 +36,7 @@ public abstract class Sensor {
 
     protected void notificarObservadores() {
         for (Observer o : observadores) {
-            o.actualizar(this);
+            o.actualizar(this, this.valorMedido);
         }
     }
 

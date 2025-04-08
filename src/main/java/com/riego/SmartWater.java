@@ -2,26 +2,28 @@ package com.riego;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class SmartWater implements Observer {
 	
-	private List<EvaluadorRiego> evaluadores;
+	private Map<Sensor, EvaluadorRiego> evaluadores;
     private Aspersor aspersor;
 
-    public SmartWater(List<EvaluadorRiego> evaluadores, Aspersor aspersor) {
+    public SmartWater(Map<Sensor, EvaluadorRiego> evaluadores, Aspersor aspersor) {
         this.evaluadores = evaluadores;
         this.aspersor = aspersor;
 
-        for (EvaluadorRiego e : evaluadores) {
-        	e.getSensor().agregarObservador(this);
-        	e.getSensor().iniciarMediciones();
-        }
+        evaluadores.keySet().forEach(sensor -> {
+            sensor.iniciarMediciones();
+            sensor.agregarObservador(this);
+        });
     }
 
     @Override
-    public void actualizar(Sensor sensor) {
-        boolean debeActivarRiego = evaluadores.stream().anyMatch(EvaluadorRiego::necesitaRiego);
+    public void actualizar(Sensor sensor, int medicion) {
+        EvaluadorRiego evaluador = evaluadores.get(sensor);
+        boolean debeActivarRiego = evaluador.evaluarRiego(medicion);
 
         if (debeActivarRiego) {
             aspersor.activar();
@@ -39,6 +41,6 @@ public class SmartWater implements Observer {
     }
     
     public List<Sensor> getSensores() {
-        return evaluadores.stream().map(EvaluadorRiego::getSensor).collect(Collectors.toList());
+        return (List<Sensor>) evaluadores.keySet();
     }
 }

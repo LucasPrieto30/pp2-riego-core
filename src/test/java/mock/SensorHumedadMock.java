@@ -6,9 +6,10 @@ import com.riego.Sensor;
 public class SensorHumedadMock extends Sensor {
 
     @Override
-    public void medir() {
+    public int medir() {
     	valorMedido = 2;
         notificarObservadores();
+        return valorMedido;
     }
 
     @Override

@@ -4,10 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.riego.Aspersor;
 import com.riego.EvaluadorRiego;
+import com.riego.Sensor;
 import com.riego.SmartWater;
 import mock.SensorHumedadMock;
 
@@ -25,8 +28,10 @@ public class US1 {
     @Test
     public void ca1RiegoActivado() throws InterruptedException {
     	int umbralActivacion = 3;
+    	Map<Sensor, EvaluadorRiego> evaluadores = new HashMap<Sensor, EvaluadorRiego>();
     	EvaluadorRiego evaluador = new EvaluadorRiego(sensor, umbralActivacion);
-        SmartWater smartWater = new SmartWater(List.of(evaluador), aspersor);
+    	evaluadores.put(sensor, evaluador);
+        SmartWater smartWater = new SmartWater(evaluadores, aspersor);
 
         Thread.sleep(5000); // esperar a que mida el sensor
         
@@ -36,8 +41,10 @@ public class US1 {
     @Test
     public void ca2RiegoNoActivado() throws InterruptedException {
     	int umbralActivacion = 1;
+    	Map<Sensor, EvaluadorRiego> evaluadores = new HashMap<Sensor, EvaluadorRiego>();
     	EvaluadorRiego evaluador = new EvaluadorRiego(sensor, umbralActivacion);
-        SmartWater smartWater = new SmartWater(List.of(evaluador), aspersor);
+    	evaluadores.put(sensor, evaluador);
+        SmartWater smartWater = new SmartWater(evaluadores, aspersor);
 
         Thread.sleep(5000);
         
