@@ -15,14 +15,16 @@ public class SmartWaterFactory {
         List<Sensor> sensores = SensorDiscoverer.discover(rutaPlugins);
         Map<String, Integer> umbrales = cargarConfiguracionDeUmbrales(rutaConfig);
 
-        Map<Sensor, EvaluadorRiego> mapaEvaluadores = sensores.stream()
-        	    .collect(Collectors.toMap(
-        	        sensor -> sensor,
-        	        sensor -> new EvaluadorRiego(sensor, umbrales.get(sensor.getClass().getSimpleName()))
-        	    ));
+        Map<Sensor, EvaluadorMediciones> evaluadores = new HashMap<>();
+        for (Sensor s : sensores) {
+            int umbral = umbrales.getOrDefault(s.getClass().getSimpleName(), 0);
+            evaluadores.put(s, new EvaluadorMediciones(umbral, s.getEstrategiaEvaluacion()));
+        }
 
         Aspersor aspersor = new Aspersor();
-        return new SmartWater(mapaEvaluadores, aspersor);   
+        AdministradorRiego administradorRiego = new AdministradorRiego(evaluadores, aspersor);
+
+        return new SmartWater(administradorRiego, sensores, aspersor);   
     }
 
     private static Map<String, Integer> cargarConfiguracionDeUmbrales(String ruta) {
