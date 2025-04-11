@@ -4,9 +4,9 @@ public class EvaluadorMediciones {
     private final int umbral;
     private final EstrategiaEvaluacion estrategia;
 
-    public EvaluadorMediciones(int umbral, EstrategiaEvaluacion estrategia) {
+    public EvaluadorMediciones(int umbral, Sensor sensor) {
         this.umbral = umbral;
-        this.estrategia = estrategia;
+        this.estrategia = sensor.getEstrategiaEvaluacion();
     }
 
     public boolean evaluarMedicion(int medicion) {

@@ -18,7 +18,7 @@ public class SmartWaterFactory {
         Map<Sensor, EvaluadorMediciones> evaluadores = new HashMap<>();
         for (Sensor s : sensores) {
             int umbral = umbrales.getOrDefault(s.getClass().getSimpleName(), 0);
-            evaluadores.put(s, new EvaluadorMediciones(umbral, s.getEstrategiaEvaluacion()));
+            evaluadores.put(s, new EvaluadorMediciones(umbral, s));
         }
 
         Aspersor aspersor = new Aspersor();
