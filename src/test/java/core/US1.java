@@ -29,7 +29,7 @@ public class US1 {
     @Test
     public void ca1RiegoActivado() throws InterruptedException {
     	int umbralActivacionAlto = 3;
-    	EvaluadorMediciones evaluador = new EvaluadorMediciones(umbralActivacionAlto, sensor.getEstrategiaEvaluacion());
+    	EvaluadorMediciones evaluador = new EvaluadorMediciones(umbralActivacionAlto, sensor);
     	Map<Sensor, EvaluadorMediciones> evaluadores = new HashMap<Sensor, EvaluadorMediciones>();
     	evaluadores.put(sensor, evaluador);
         AdministradorRiego adminastrador = new AdministradorRiego(evaluadores, aspersor);
@@ -44,7 +44,7 @@ public class US1 {
     @Test
     public void ca2RiegoNoActivado() throws InterruptedException {
     	int umbralActivacionBajo = 1;
-    	EvaluadorMediciones evaluador = new EvaluadorMediciones(umbralActivacionBajo, sensor.getEstrategiaEvaluacion());
+    	EvaluadorMediciones evaluador = new EvaluadorMediciones(umbralActivacionBajo, sensor);
     	Map<Sensor, EvaluadorMediciones> evaluadores = new HashMap<Sensor, EvaluadorMediciones>();
     	evaluadores.put(sensor, evaluador);
         AdministradorRiego adminastrador = new AdministradorRiego(evaluadores, aspersor);
