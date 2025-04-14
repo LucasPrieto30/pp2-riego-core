@@ -15,7 +15,6 @@ public class SmartWater implements Observer {
 
         for (Sensor s : sensores) {
             s.agregarObservador(this);
-            s.iniciarMediciones();
         }
     }
 

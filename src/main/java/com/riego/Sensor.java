@@ -7,6 +7,10 @@ import java.util.TimerTask;
 public abstract class Sensor {
     private List<Observer> observadores = new ArrayList<>();
     protected int valorMedido;
+    
+    public Sensor () {
+    	iniciarMediciones();
+    }
    
     protected abstract int medir();
     
