@@ -4,12 +4,17 @@ import com.riego.EstrategiaEvaluacion;
 import com.riego.Sensor;
 
 public class SensorHumedadMock extends Sensor {
-
+	private int medicionFija;
+	
+	public SensorHumedadMock(int medicionFija) {
+		this.medicionFija = medicionFija;
+	}
+	
     @Override
     public int medir() {
-    	valorMedido = 2;
         notificarObservadores();
-        return valorMedido;
+        this.valorMedido = medicionFija;
+        return this.valorMedido;
     }
 
     @Override
