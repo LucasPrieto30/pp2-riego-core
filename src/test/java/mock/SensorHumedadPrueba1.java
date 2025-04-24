@@ -3,17 +3,12 @@ package mock;
 import com.riego.EstrategiaEvaluacion;
 import com.riego.Sensor;
 
-public class SensorHumedadMock extends Sensor {
-	private int medicionFija;
-	
-	public SensorHumedadMock(int medicionFija) {
-		this.medicionFija = medicionFija;
-	}
+public class SensorHumedadPrueba1 extends Sensor {
 	
     @Override
     public int medir() {
         notificarObservadores();
-        this.valorMedido = medicionFija;
+        this.valorMedido = 1;
         return this.valorMedido;
     }
 
