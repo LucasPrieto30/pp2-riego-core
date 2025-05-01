@@ -2,12 +2,11 @@ package com.riego;
 
 public class Main {
     public static void main(String[] args) {
-    	String rutaPlugins = args[0];
-        String rutaConfiguracion = args[1];
+    	String rutaConfiguracion = args[0];
 
         System.out.println("Inicializando SmartWater...");
 
-        SmartWater smartWater = SmartWaterFactory.crear(rutaPlugins, rutaConfiguracion);
+        SmartWater smartWater = SmartWaterFactory.crear(rutaConfiguracion);
 
         System.out.println("Sensores activos:");
         for (Sensor s : smartWater.getSensores()) {

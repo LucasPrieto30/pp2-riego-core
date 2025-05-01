@@ -1,0 +1,6 @@
+{
+  "ruta_plugins": "src/test/java/resources/plugins/Sensor1/",
+  "umbrales": {
+    "SensorHumedadPrueba1": 2
+  }
+}
