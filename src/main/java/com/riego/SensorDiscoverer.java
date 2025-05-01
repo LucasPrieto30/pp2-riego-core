@@ -22,11 +22,6 @@ public class SensorDiscoverer {
             URLClassLoader classLoader = null;
             classLoader = URLClassLoader.newInstance(new URL[]{pluginUrl});
             
-            System.out.println("Rutas de búsqueda en classLoader:");
-            for (URL url : classLoader.getURLs()) {
-                System.out.println("   : " + url);
-            }
-
             for (File file : pluginDir.listFiles()) {
                 if (file.getName().endsWith(".class")) {
                     String className = file.getName().replace("/", ".").replace(".class", "");
