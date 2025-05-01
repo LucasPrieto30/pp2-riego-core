@@ -6,14 +6,13 @@ public class Main {
 
         System.out.println("Inicializando SmartWater...");
 
-        SmartWater smartWater = SmartWaterFactory.crear(rutaConfiguracion);
+        SmartAqua smartWater = SmartAquaFactory.crear(rutaConfiguracion);
 
         System.out.println("Sensores activos:");
         for (Sensor s : smartWater.getSensores()) {
             System.out.println(" - " + s.getClass().getSimpleName());
         }
 
-        // Esperar 10 segundos para que se realicen algunas mediciones
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

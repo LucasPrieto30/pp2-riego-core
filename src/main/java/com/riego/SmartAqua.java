@@ -2,13 +2,13 @@ package com.riego;
 
 import java.util.List;
 
-public class SmartWater implements Observer {
+public class SmartAqua implements Observer {
 	
 	private AdministradorRiego administradorRiego;
 	private List<Sensor> sensores;
 	private Aspersor aspersor;
 
-    public SmartWater(AdministradorRiego administradorRiego, List<Sensor> sensores, Aspersor aspersor) {
+    public SmartAqua(AdministradorRiego administradorRiego, List<Sensor> sensores, Aspersor aspersor) {
         this.administradorRiego = administradorRiego;
         this.sensores = sensores;
         this.aspersor = aspersor;

@@ -8,9 +8,9 @@ import java.util.Map;
 
 import org.json.JSONObject;
 
-public class SmartWaterFactory {
+public class SmartAquaFactory {
 
-    public static SmartWater crear(String rutaConfig) {
+    public static SmartAqua crear(String rutaConfig) {
     	
         String configJson;
 		try {
@@ -32,7 +32,7 @@ public class SmartWaterFactory {
 	        Aspersor aspersor = new Aspersor();
 	        AdministradorRiego administradorRiego = new AdministradorRiego(evaluadores, aspersor);
 	
-	        return new SmartWater(administradorRiego, sensores, aspersor);
+	        return new SmartAqua(administradorRiego, sensores, aspersor);
 		} catch (IOException e) {
 			throw new RuntimeException("Error al crear SmartAqua desde la configuración", e);
 		}
