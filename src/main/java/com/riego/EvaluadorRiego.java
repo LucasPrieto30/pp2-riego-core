@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class EvaluadorRiego {
     private List<Observer> observadores = new ArrayList<>();
     protected boolean debeRegar;
-    private int umbral;
+    protected int umbral;
     
     public void agregarObservador(Observer o) {
         observadores.add(o);
