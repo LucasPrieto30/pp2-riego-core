@@ -27,5 +27,5 @@ public abstract class EvaluadorRiego {
     
     protected abstract int obtenerMedicion();
     
-    protected abstract void inicarEvaluaciones();
+    protected abstract void iniciarEvaluaciones();
 }
