@@ -1,6 +1,6 @@
 {
-  "ruta_plugins": "src/test/java/resources/plugins/Sensor1/",
+  "ruta_plugins": "src/test/java/resources/plugins/Evaluador1/",
   "umbrales": {
-    "SensorHumedadPrueba1": 2
+    "EvaluadorHumedadPrueba1": 2
   }
 }

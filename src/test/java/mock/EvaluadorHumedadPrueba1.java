@@ -1,0 +1,31 @@
+package mock;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import com.riego.EvaluadorRiego;
+
+public class EvaluadorHumedadPrueba1 extends EvaluadorRiego {
+
+    public EvaluadorHumedadPrueba1() {
+        iniciarEvaluaciones();
+    }
+
+    @Override
+    protected int obtenerMedicion() {
+        return 1;
+    }
+
+    @Override
+    protected void iniciarEvaluaciones() {
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                int medicion = obtenerMedicion();
+                debeRegar = medicion < umbral;
+                notificarObservadores();
+            }
+        }, 0, 3000);
+    }
+}
