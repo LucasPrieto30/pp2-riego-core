@@ -24,7 +24,7 @@ public class SmartAqua implements Observer {
     }
         
     public boolean riegoActivado() {
-    	return aspersor.estaActivo();
+    	return aspersor.estaRegando();
     }
     
     public List<EvaluadorRiego> getEvaluadores() {

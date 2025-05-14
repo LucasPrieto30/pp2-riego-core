@@ -9,9 +9,9 @@ public class AdministradorRiego {
     
     public void procesar(boolean seDebeActivarRiego) {
         if (seDebeActivarRiego) {
-            aspersor.activar();
+            aspersor.regar();
         } else {
-            aspersor.desactivar();
+            aspersor.apagarRiego();
         }
     }
 }

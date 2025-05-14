@@ -3,15 +3,15 @@ package com.riego;
 public class Aspersor {
     private boolean activo = false;
   
-    public void activar() {
+    public void regar() {
     	activo = true;
     }
     
-    public void desactivar() {
+    public void apagarRiego() {
     	activo = false;
     }
     
-    public boolean estaActivo() {
+    public boolean estaRegando() {
     	return activo;
     }
 }
