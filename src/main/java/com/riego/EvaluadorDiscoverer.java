@@ -6,15 +6,15 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SensorDiscoverer {
+public class EvaluadorDiscoverer {
     
-    public static List<Sensor> discover(String path) {
-        List<Sensor> sensores = new ArrayList<>();
+    public static List<EvaluadorRiego> discover(String path) {
+        List<EvaluadorRiego> evaluadores = new ArrayList<>();
         File pluginDir = new File(path);
         
         if (!pluginDir.exists() || !pluginDir.isDirectory()) {
             System.out.println("No se encontró la carpeta de plugins.");
-            return sensores;
+            return evaluadores;
         }
 
         try {
@@ -29,12 +29,12 @@ public class SensorDiscoverer {
                     
                     try {
                         Class<?> pluginClass  = Class.forName(className, true, classLoader);
-                        if (Sensor.class.isAssignableFrom(pluginClass)) {
-                        	Sensor sensor = (Sensor) pluginClass.getDeclaredConstructor().newInstance();
-                            sensores.add(sensor);
-                            System.out.println("Sensor cargado: " + className);
+                        if (EvaluadorRiego.class.isAssignableFrom(pluginClass)) {
+                        	EvaluadorRiego evaluador = (EvaluadorRiego) pluginClass.getDeclaredConstructor().newInstance();
+                        	evaluadores.add(evaluador);
+                            System.out.println("Evaluador cargado: " + className);
                         } else {
-                            System.out.println("" + className + " no implementa Sensor.");
+                            System.out.println("" + className + " no implementa EvaluadorRiego.");
                         }
                     } catch (ClassNotFoundException e) {
                         System.out.println("ERROR: No se encontró la clase " + className);
@@ -48,6 +48,6 @@ public class SensorDiscoverer {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return sensores;
+        return evaluadores;
     }
 }

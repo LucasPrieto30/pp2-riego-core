@@ -1,5 +1,6 @@
 package com.riego;
 
 public interface Observer {
-    void actualizar(Sensor sensor, int medicion);
+    void actualizar(EvaluadorRiego evaluador, boolean debeRegar);
+
 }

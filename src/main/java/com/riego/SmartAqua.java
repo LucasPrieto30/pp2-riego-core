@@ -5,29 +5,29 @@ import java.util.List;
 public class SmartAqua implements Observer {
 	
 	private AdministradorRiego administradorRiego;
-	private List<Sensor> sensores;
+	private List<EvaluadorRiego> evaluadores;
 	private Aspersor aspersor;
 
-    public SmartAqua(AdministradorRiego administradorRiego, List<Sensor> sensores, Aspersor aspersor) {
+    public SmartAqua(List<EvaluadorRiego> evaluadores, AdministradorRiego administradorRiego, Aspersor aspersor) {
         this.administradorRiego = administradorRiego;
-        this.sensores = sensores;
+        this.evaluadores = evaluadores;
         this.aspersor = aspersor;
 
-        for (Sensor s : sensores) {
-            s.agregarObservador(this);
+        for (EvaluadorRiego e : evaluadores) {
+        	e.agregarObservador(this);
         }
     }
 
     @Override
-    public void actualizar(Sensor sensor, int medicion) {
-    	administradorRiego.procesarMedicion(sensor, medicion);
+    public void actualizar(EvaluadorRiego sensor, boolean debeActivarseRiego) {
+    	administradorRiego.procesar(debeActivarseRiego);
     }
         
     public boolean riegoActivado() {
     	return aspersor.estaActivo();
     }
     
-    public List<Sensor> getSensores() {
-        return sensores;
+    public List<EvaluadorRiego> getEvaluadores() {
+        return evaluadores;
     }
 }

@@ -5,7 +5,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public abstract class Sensor {
-    private List<Observer> observadores = new ArrayList<>();
     protected int valorMedido;
     
     public Sensor () {
@@ -17,9 +16,7 @@ public abstract class Sensor {
     public int getValorMedido() {
     	return valorMedido;
     }
-    
-    public abstract EstrategiaEvaluacion getEstrategiaEvaluacion();
-    
+        
     public void iniciarMediciones() {
     	Timer timer = new Timer();
     	timer.scheduleAtFixedRate(new TimerTask() {
@@ -28,20 +25,5 @@ public abstract class Sensor {
     			medir();
     		}
     	}, 0, 3000);
-    }
-    
-    public void agregarObservador(Observer o) {
-        observadores.add(o);
-    }
-
-    public void eliminarObservador(Observer o) {
-        observadores.remove(o);
-    }
-
-    protected void notificarObservadores() {
-        for (Observer o : observadores) {
-            o.actualizar(this, this.valorMedido);
-        }
-    }
-
+    }    
 }

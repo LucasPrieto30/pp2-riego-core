@@ -1,20 +1,13 @@
 package com.riego;
 
-import java.util.Map;
-
 public class AdministradorRiego {
-    private final Map<Sensor, EvaluadorMediciones> evaluadores;
     private final Aspersor aspersor;
     
-    public AdministradorRiego(Map<Sensor, EvaluadorMediciones> evaluadores, Aspersor aspersor) {
-        this.evaluadores = evaluadores;
+    public AdministradorRiego(Aspersor aspersor) {
         this.aspersor = aspersor;
     }
     
-    public void procesarMedicion(Sensor sensor, int medicion) {
-        EvaluadorMediciones evaluador = evaluadores.get(sensor);
-        boolean seDebeActivarRiego = evaluador.evaluarMedicion(medicion);
-        
+    public void procesar(boolean seDebeActivarRiego) {
         if (seDebeActivarRiego) {
             aspersor.activar();
         } else {
