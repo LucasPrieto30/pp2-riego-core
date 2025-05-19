@@ -3,17 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - US1</title>
+<title>Test results - US2</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="content">
-<h1>US1</h1>
+<h1>US2</h1>
 <div class="breadcrumbs">
 <a href="../index.html">all</a> &gt; 
-<a href="../packages/smartaqua.html">smartaqua</a> &gt; US1</div>
+<a href="../packages/smartaqua.html">smartaqua</a> &gt; US2</div>
 <div id="summary">
 <table>
 <tr>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">8.041s</div>
+<div class="counter">8.007s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,13 +78,13 @@
 </tr>
 </thead>
 <tr>
-<td class="success">ca1RiegoActivado()</td>
-<td class="success">4.036s</td>
+<td class="success">ca1ActivacionRegistrada()</td>
+<td class="success">4.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">ca2RiegoNoActivado()</td>
-<td class="success">4.005s</td>
+<td class="success">ca2NoSeRegistraNadaSinEvaluadores()</td>
+<td class="success">4.003s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -93,28 +93,29 @@
 <h2>Standard output</h2>
 <span class="code">
 <pre>{
-  &quot;ruta_plugins&quot;: &quot;src/test/java/resources/plugins/Evaluador1/&quot;,
+  &quot;ruta_plugins&quot;: &quot;src/test/java/resources/plugins/directorioVacio/&quot;,
   &quot;umbrales&quot;: {
-    &quot;EvaluadorHumedadPrueba1&quot;: 2
+    &quot;EvaluadorHumedadLogger&quot;: 5
   }
 }
-Intentando cargar: EvaluadorHumedadPrueba1
-Evaluador cargado: EvaluadorHumedadPrueba1
-Intentando cargar: EvaluadorHumedadPrueba1$1
-EvaluadorHumedadPrueba1$1 no implementa EvaluadorRiego.
-[LOG] 02:43:41 - EvaluadorHumedadPrueba1, Medición: 1, Umbral: 2, Activar riego: true
+No se encontró la carpeta de plugins.
+[LOG] 02:43:47 - EvaluadorHumedadPrueba1, Medición: 1, Umbral: 2, Activar riego: true
+[LOG] 02:43:48 - EvaluadorHumedadPrueba3, Medición: 3, Umbral: 2, Activar riego: false
+[LOG] 02:43:50 - EvaluadorHumedadPrueba1, Medición: 1, Umbral: 2, Activar riego: true
 {
-  &quot;ruta_plugins&quot;: &quot;src/test/java/resources/plugins/Evaluador3/&quot;,
+  &quot;ruta_plugins&quot;: &quot;src/test/java/resources/plugins/Logger/&quot;,
   &quot;umbrales&quot;: {
-    &quot;EvaluadorHumedadPrueba3&quot;: 2
+    &quot;EvaluadorHumedadLogger&quot;: 5
   }
 }
-Intentando cargar: EvaluadorHumedadPrueba3
-Evaluador cargado: EvaluadorHumedadPrueba3
-Intentando cargar: EvaluadorHumedadPrueba3$1
-EvaluadorHumedadPrueba3$1 no implementa EvaluadorRiego.
-[LOG] 02:43:44 - EvaluadorHumedadPrueba1, Medición: 1, Umbral: 2, Activar riego: true
-[LOG] 02:43:45 - EvaluadorHumedadPrueba3, Medición: 3, Umbral: 2, Activar riego: false
+Intentando cargar: EvaluadorHumedadLogger$1
+EvaluadorHumedadLogger$1 no implementa EvaluadorRiego.
+Intentando cargar: EvaluadorHumedadLogger
+Evaluador cargado: EvaluadorHumedadLogger
+[LOG] 02:43:51 - EvaluadorHumedadPrueba3, Medición: 3, Umbral: 2, Activar riego: false
+[LOG] 02:43:53 - EvaluadorHumedadPrueba1, Medición: 1, Umbral: 2, Activar riego: true
+[LOG] 02:43:53 - EvaluadorHumedadLogger, Medición: 0, Umbral: 5, Activar riego: true
+[LOG] 02:43:54 - EvaluadorHumedadPrueba3, Medición: 3, Umbral: 2, Activar riego: false
 </pre>
 </span>
 </div>
