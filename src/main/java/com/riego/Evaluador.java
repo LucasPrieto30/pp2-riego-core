@@ -34,6 +34,9 @@ public abstract class Evaluador {
         return ultimaMedicion;
     }
 
+    public boolean getDebeRegar() {
+        return debeRegar;
+    }
     
     protected abstract int obtenerMedicion();
     
