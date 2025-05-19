@@ -15,6 +15,7 @@ public class SmartAquaFactory {
         String configJson;
         try {
             configJson = new String(Files.readAllBytes(Paths.get(rutaConfig)));
+            System.out.println(configJson);
             JSONObject config = new JSONObject(configJson);
 
             String rutaPlugins = config.getString("ruta_plugins");
@@ -30,7 +31,8 @@ public class SmartAquaFactory {
 
             Aspersor aspersor = new Aspersor();
             AdministradorRiego administrador = new AdministradorRiego(aspersor);
-            return new SmartAqua(evaluadores, administrador, aspersor);
+            LoggerActivaciones logger = new LoggerActivaciones();
+            return new SmartAqua(evaluadores, administrador, aspersor, logger);
 
         } catch (IOException e) {
             throw new RuntimeException("Error al crear SmartAqua desde la configuración", e);

@@ -1,43 +1,35 @@
+
 package smartaqua;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.List;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.riego.LoggerMediciones;
+import com.riego.LoggerActivaciones;
 import com.riego.SmartAqua;
 import com.riego.SmartAquaFactory;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class US2 {
 
-    private LoggerMediciones logger;
-//
-//    @BeforeEach
-//    public void setUp() {
-//        logger = new LoggerMediciones();
-//    }
-//
-//    @Test
-//    public void ca1_RegistraMedicion() throws InterruptedException {
-//        SmartAqua smartWater = SmartAquaFactory.crear("src/test/java/resources/config/registraMedicionConfig.json");
-//        smartWater.getEvaluadores().forEach(evaluador -> evaluador.agregarObservador(logger));
-//        Thread.sleep(4000);
-//        List<String> logs = logger.getLogs();
-//
-//        assertTrue(logs.size() < 0, "El log debería contener al menos una medición.");
-//    }
-//
-//    @Test
-//    public void ca2_NoRegistraMedicion() throws InterruptedException {
-//        SmartAqua smartWater = SmartAquaFactory.crear("src/test/java/resources/config/noRegistraMedicionConfig.json");
-//        smartWater.getEvaluadores().forEach(evaluador -> evaluador.agregarObservador(logger));
-//        Thread.sleep(4000);
-//        List<String> logs = logger.getLogs();
-//
-//        assertTrue(logs.size() == 0, "No se registraron mediciones.");
-//    }
+    @Test
+    public void ca1ActivacionRegistrada() throws InterruptedException {
+        // Configuración: EvaluadorHumedad siempre requiere riego (medición 25, umbral 30)
+        SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerRegistraActivacionConfig.json");
+        Thread.sleep(4000); 
+
+        List<String> logs = smartAqua.getLogger().getLogs();
+    
+        assertTrue(logs.size() > 0, "Se esperaba al menos una activación registrada.");
+        assertTrue(logs.get(0).contains("EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
+    }
+
+    @Test
+    public void ca2NoSeRegistraNadaSinEvaluadores() throws InterruptedException {
+        // Configuración: carpeta vacía, no se cargan evaluadores
+        SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerNoRegistraActivacionConfig.json");
+        Thread.sleep(4000);
+
+        List<String> logs = smartAqua.getLogger().getLogs();
+        assertEquals(0, logs.size(), "No debe haber activaciones registradas si no hay evaluadores.");
+    }
 }
