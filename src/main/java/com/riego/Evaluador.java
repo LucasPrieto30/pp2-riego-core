@@ -7,6 +7,7 @@ public abstract class Evaluador {
     private List<Observer> observadores = new ArrayList<>();
     protected boolean debeRegar;
     protected int umbral;
+    protected int ultimaMedicion;
     
     public void agregarObservador(Observer o) {
         observadores.add(o);
@@ -24,6 +25,15 @@ public abstract class Evaluador {
     public void configurarUmbral(int umbral) {
     	this.umbral = umbral;
     }
+    
+    public int getUmbral() {
+        return umbral;
+    }
+
+    public int getUltimaMedicion() {
+        return ultimaMedicion;
+    }
+
     
     protected abstract int obtenerMedicion();
     
