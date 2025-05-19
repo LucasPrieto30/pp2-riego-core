@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.riego.LoggerMediciones;
-import com.riego.Sensor;
 import com.riego.SmartAqua;
 import com.riego.SmartAquaFactory;
 

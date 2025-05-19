@@ -9,7 +9,7 @@ public class Main {
         SmartAqua smartWater = SmartAquaFactory.crear(rutaConfiguracion);
 
         System.out.println("Sensores activos:");
-        for (EvaluadorRiego s : smartWater.getEvaluadores()) {
+        for (Evaluador s : smartWater.getEvaluadores()) {
             System.out.println(" - " + s.getClass().getSimpleName());
         }
 

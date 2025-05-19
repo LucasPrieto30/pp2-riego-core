@@ -3,9 +3,9 @@ package mock;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.riego.EvaluadorRiego;
+import com.riego.Evaluador;
 
-public class EvaluadorHumedadPrueba1 extends EvaluadorRiego {
+public class EvaluadorHumedadPrueba1 extends Evaluador {
 
     public EvaluadorHumedadPrueba1() {
         iniciarEvaluaciones();

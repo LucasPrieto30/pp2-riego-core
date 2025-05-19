@@ -20,9 +20,9 @@ public class SmartAquaFactory {
             String rutaPlugins = config.getString("ruta_plugins");
             JSONObject umbralesJSON = config.getJSONObject("umbrales");
 
-            List<EvaluadorRiego> evaluadores = EvaluadorDiscoverer.discover(rutaPlugins);
+            List<Evaluador> evaluadores = EvaluadorDiscoverer.discover(rutaPlugins);
 
-            for (EvaluadorRiego evaluador : evaluadores) {
+            for (Evaluador evaluador : evaluadores) {
                 String nombreClase = evaluador.getClass().getSimpleName();
                 int umbral = umbralesJSON.optInt(nombreClase, 0);
                 evaluador.configurarUmbral(umbral);

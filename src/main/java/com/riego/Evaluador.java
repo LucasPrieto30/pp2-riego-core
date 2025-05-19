@@ -3,7 +3,7 @@ package com.riego;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class EvaluadorRiego {
+public abstract class Evaluador {
     private List<Observer> observadores = new ArrayList<>();
     protected boolean debeRegar;
     protected int umbral;

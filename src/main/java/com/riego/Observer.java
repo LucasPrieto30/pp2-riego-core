@@ -1,6 +1,6 @@
 package com.riego;
 
 public interface Observer {
-    void actualizar(EvaluadorRiego evaluador, boolean debeRegar);
+    void actualizar(Evaluador evaluador, boolean debeRegar);
 
 }

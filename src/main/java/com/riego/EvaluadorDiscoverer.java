@@ -8,8 +8,8 @@ import java.util.List;
 
 public class EvaluadorDiscoverer {
     
-    public static List<EvaluadorRiego> discover(String path) {
-        List<EvaluadorRiego> evaluadores = new ArrayList<>();
+    public static List<Evaluador> discover(String path) {
+        List<Evaluador> evaluadores = new ArrayList<>();
         File pluginDir = new File(path);
         
         if (!pluginDir.exists() || !pluginDir.isDirectory()) {
@@ -29,8 +29,8 @@ public class EvaluadorDiscoverer {
                     
                     try {
                         Class<?> pluginClass  = Class.forName(className, true, classLoader);
-                        if (EvaluadorRiego.class.isAssignableFrom(pluginClass)) {
-                        	EvaluadorRiego evaluador = (EvaluadorRiego) pluginClass.getDeclaredConstructor().newInstance();
+                        if (Evaluador.class.isAssignableFrom(pluginClass)) {
+                        	Evaluador evaluador = (Evaluador) pluginClass.getDeclaredConstructor().newInstance();
                         	evaluadores.add(evaluador);
                             System.out.println("Evaluador cargado: " + className);
                         } else {
