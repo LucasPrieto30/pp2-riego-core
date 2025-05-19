@@ -11,7 +11,7 @@ public class LoggerActivaciones implements Observer {
 
     @Override
     public void actualizar(Evaluador evaluador, boolean activaRiego) {
-    	 String hora = new SimpleDateFormat("HH:mm:ss").format(new Date());
+    	String hora = new SimpleDateFormat("HH:mm:ss").format(new Date());
     	String mensaje = hora + " - " + evaluador.getClass().getSimpleName()
                 + ", Medición: " + evaluador.getUltimaMedicion()
                 + ", Umbral: " + evaluador.getUmbral()

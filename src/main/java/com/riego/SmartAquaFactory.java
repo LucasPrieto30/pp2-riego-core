@@ -18,7 +18,7 @@ public class SmartAquaFactory {
             System.out.println(configJson);
             JSONObject config = new JSONObject(configJson);
 
-            String rutaPlugins = config.getString("ruta_plugins");
+            String rutaPlugins = config.getString("ruta_evaluadores");
             JSONObject umbralesJSON = config.getJSONObject("umbrales");
 
             List<Evaluador> evaluadores = EvaluadorDiscoverer.discover(rutaPlugins);

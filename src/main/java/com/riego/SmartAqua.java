@@ -8,6 +8,7 @@ public class SmartAqua implements Observer {
 	private List<Evaluador> evaluadores;
 	private Aspersor aspersor;
 	private LoggerActivaciones logger;
+
     public SmartAqua(List<Evaluador> evaluadores, AdministradorRiego administradorRiego, Aspersor aspersor, LoggerActivaciones logger) {
         this.administradorRiego = administradorRiego;
         this.evaluadores = evaluadores;

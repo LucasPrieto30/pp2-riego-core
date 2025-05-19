@@ -22,8 +22,8 @@ public class EvaluadorHumedadPrueba3 extends Evaluador {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                int medicion = obtenerMedicion();
-                debeRegar = medicion < umbral;
+            	ultimaMedicion = obtenerMedicion();
+            	debeRegar = ultimaMedicion < umbral;
                 notificarObservadores();
             }
         }, 0, 3000);

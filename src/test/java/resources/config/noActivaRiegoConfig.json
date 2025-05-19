@@ -1,5 +1,5 @@
 {
-  "ruta_plugins": "src/test/java/resources/plugins/Evaluador3/",
+  "ruta_evaluadores": "src/test/java/resources/plugins/Evaluador3/",
   "umbrales": {
     "EvaluadorHumedadPrueba3": 2
   }
