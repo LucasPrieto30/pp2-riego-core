@@ -14,8 +14,7 @@ public class LoggerActivaciones implements Observer {
     	String hora = new SimpleDateFormat("HH:mm:ss").format(new Date());
     	String mensaje = hora + " - " + evaluador.getClass().getSimpleName()
                 + ", Medición: " + evaluador.getUltimaMedicion()
-                + ", Umbral: " + evaluador.getUmbral()
-                + ", Activar riego: " + activaRiego;
+                + ", Umbral: " + evaluador.getUmbral();
     	if (activaRiego) {
     		logs.add(mensaje);    		
     	}
