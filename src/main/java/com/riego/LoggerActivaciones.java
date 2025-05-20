@@ -16,7 +16,9 @@ public class LoggerActivaciones implements Observer {
                 + ", Medición: " + evaluador.getUltimaMedicion()
                 + ", Umbral: " + evaluador.getUmbral()
                 + ", Activar riego: " + activaRiego;
-        logs.add(mensaje);
+    	if (activaRiego) {
+    		logs.add(mensaje);    		
+    	}
         System.out.println("[LOG] " + mensaje);
     }
     
