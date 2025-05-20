@@ -10,7 +10,7 @@ public class US2 {
     @Test
     public void ca1ActivacionRegistrada() throws InterruptedException {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerRegistraActivacionConfig.json");
-        Thread.sleep(4000); 
+        smartAqua.getEvaluadores().forEach(t -> t.evaluar());
 
         List<String> logs = smartAqua.getLogger().getLogs();
     
@@ -21,7 +21,7 @@ public class US2 {
     public void ca2NoSeRegistraActivacion() throws InterruptedException {
         // Configuración: carpeta vacía, no se cargan evaluadores
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerNoRegistraActivacionConfig.json");
-        Thread.sleep(4000);
+        smartAqua.getEvaluadores().forEach(t -> t.evaluar());
 
         List<String> logs = smartAqua.getLogger().getLogs();
         assertEquals(0, logs.size(), "No debe haber activaciones registradas si no hay evaluadores.");

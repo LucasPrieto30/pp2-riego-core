@@ -7,25 +7,15 @@ import com.riego.Evaluador;
 
 public class EvaluadorHumedadPrueba1 extends Evaluador {
 
-    public EvaluadorHumedadPrueba1() {
-        iniciarEvaluaciones();
-    }
-
     @Override
     protected int obtenerMedicion() {
         return 1;
     }
+    
+    public void evaluar() {
+    	ultimaMedicion = obtenerMedicion();
+        debeRegar = ultimaMedicion < umbral;
+        notificarObservadores();
 
-    @Override
-    protected void iniciarEvaluaciones() {
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-            	ultimaMedicion = obtenerMedicion();
-                debeRegar = ultimaMedicion < umbral;
-                notificarObservadores();
-            }
-        }, 0, 3000);
     }
 }

@@ -40,5 +40,5 @@ public abstract class Evaluador {
     
     protected abstract int obtenerMedicion();
     
-    protected abstract void iniciarEvaluaciones();
+    public abstract void evaluar();
 }
