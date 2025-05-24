@@ -34,7 +34,7 @@ public class SmartAqua implements Observer {
         return evaluadores;
     }
     
-    public LoggerActivaciones getLogger() {
-        return logger;
+    public List<String> getLogs() {
+        return logger.getLogs();
     }
 }

@@ -12,7 +12,7 @@ public class US2 {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerRegistraActivacionConfig.json");
         smartAqua.getEvaluadores().forEach(t -> t.evaluar());
 
-        List<String> logs = smartAqua.getLogger().getLogs();
+        List<String> logs = smartAqua.getLogs();
     
         assertTrue(logs.get(0).contains("EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
     }
@@ -23,7 +23,7 @@ public class US2 {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerNoRegistraActivacionConfig.json");
         smartAqua.getEvaluadores().forEach(t -> t.evaluar());
 
-        List<String> logs = smartAqua.getLogger().getLogs();
+        List<String> logs = smartAqua.getLogs();
         assertEquals(0, logs.size(), "No debe haber activaciones registradas si no hay evaluadores.");
     }
 }
