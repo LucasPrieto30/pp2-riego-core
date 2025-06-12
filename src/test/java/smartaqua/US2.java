@@ -1,29 +1,38 @@
 package smartaqua;
+import com.riego.LoggerActivaciones;
 import com.riego.SmartAqua;
 import com.riego.SmartAquaFactory;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class US2 {
-
-    @Test
+	LoggerActivaciones logger;
+	
+	@BeforeEach
+	public void setUp() {
+        logger = new LoggerActivaciones();
+	}
+	
+	@Test
     public void ca1ActivacionRegistrada() throws InterruptedException {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerRegistraActivacionConfig.json");
+        smartAqua.getEvaluadores().forEach(e -> e.agregarObservador(logger));
         smartAqua.getEvaluadores().forEach(t -> t.evaluar());
-
-        List<String> logs = smartAqua.getLogs();
-    
+        
+        List<String> logs = logger.getLogs();
         assertTrue(logs.get(0).contains("EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
     }
 
     @Test
     public void ca2NoSeRegistraActivacion() throws InterruptedException {
-        // Configuración: carpeta vacía, no se cargan evaluadores
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerNoRegistraActivacionConfig.json");
+        smartAqua.getEvaluadores().forEach(e -> e.agregarObservador(logger));
         smartAqua.getEvaluadores().forEach(t -> t.evaluar());
 
-        List<String> logs = smartAqua.getLogs();
-        assertEquals(0, logs.size(), "No debe haber activaciones registradas si no hay evaluadores.");
+        List<String> logs = logger.getLogs();
+        assertTrue(logs.isEmpty(), "No debe haber activaciones registradas si no hay evaluadores.");
     }
 }

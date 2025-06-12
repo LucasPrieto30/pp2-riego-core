@@ -18,7 +18,6 @@ public class LoggerActivaciones implements Observer {
     	if (activaRiego) {
     		logs.add(mensaje);    		
     	}
-        System.out.println("[LOG] " + mensaje);
     }
     
     public List<String> getLogs() {

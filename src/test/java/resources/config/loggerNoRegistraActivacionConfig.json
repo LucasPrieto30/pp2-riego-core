@@ -1,6 +1,4 @@
 {
   "ruta_evaluadores": "src/test/java/resources/plugins/directorioVacio/",
-  "umbrales": {
-    "EvaluadorHumedadLogger": 5
-  }
+  "umbrales": {}
 }

@@ -16,6 +16,5 @@ public class EvaluadorHumedadPrueba1 extends Evaluador {
     	ultimaMedicion = obtenerMedicion();
         debeRegar = ultimaMedicion < umbral;
         notificarObservadores();
-
     }
 }

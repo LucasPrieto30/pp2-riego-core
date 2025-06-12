@@ -8,7 +8,7 @@ public class Main {
 
         SmartAqua smartAqua = SmartAquaFactory.crear(rutaConfiguracion);
 
-        System.out.println("Sensores activos:");
+        System.out.println("Evaluadores activos:");
         for (Evaluador s : smartAqua.getEvaluadores()) {
             System.out.println(" - " + s.getClass().getSimpleName());
         }
@@ -19,6 +19,6 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("¿Riego activado? " + (smartAqua.riegoActivado() ? "Sí 💧" : "No ❌"));
+        System.out.println("¿Riego activado? " + (smartAqua.riegoActivado() ? "Sí" : "No ❌"));
     }
 }
