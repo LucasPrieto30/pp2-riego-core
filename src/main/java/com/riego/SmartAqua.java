@@ -1,6 +1,7 @@
 package com.riego;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SmartAqua implements Observer {
 	
@@ -27,10 +28,12 @@ public class SmartAqua implements Observer {
     	return aspersor.estaRegando();
     }
     
-    public List<Evaluador> getEvaluadores() {
-        return evaluadores;
+    public List<String> getNombresEvaluadores() {
+        return evaluadores.stream()
+            .map(e -> e.getClass().getSimpleName())
+            .collect(Collectors.toList());
     }
-    
+
     public void agregarObservador(Observer o) {
         registrador.agregarObservador(o);;
     }
