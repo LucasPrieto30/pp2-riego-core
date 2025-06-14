@@ -9,8 +9,8 @@ public class Main {
         SmartAqua smartAqua = SmartAquaFactory.crear(rutaConfiguracion);
 
         System.out.println("Evaluadores activos:");
-        for (Evaluador s : smartAqua.getEvaluadores()) {
-            System.out.println(" - " + s.getClass().getSimpleName());
+        for (String s : smartAqua.getNombresEvaluadores()) {
+            System.out.println(" - " + s);
         }
 
         try {
