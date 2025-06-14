@@ -23,7 +23,7 @@ public class US2 {
         smartAqua.evaluarTodos();
 
         List<String> logs = logger.getLogs();
-        assertTrue(logs.get(0).contains("Riego activado por EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
+        assertTrue(logs.get(0).contains("Riego activado por EvaluadorHumedad1 (medición: 1, umbral: 5)"));
     }
 
     @Test
