@@ -19,18 +19,18 @@ public class US2 {
 	@Test
     public void ca1ActivacionRegistrada() throws InterruptedException {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerRegistraActivacionConfig.json");
-        smartAqua.getEvaluadores().forEach(e -> e.agregarObservador(logger));
-        smartAqua.getEvaluadores().forEach(t -> t.evaluar());
-        
+        smartAqua.agregarObservador(logger);
+        smartAqua.evaluarTodos();
+
         List<String> logs = logger.getLogs();
-        assertTrue(logs.get(0).contains("EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
+        assertTrue(logs.get(0).contains("Riego activado por EvaluadorHumedad"), "El log debe contener la clase evaluadora.");
     }
 
     @Test
     public void ca2NoSeRegistraActivacion() throws InterruptedException {
         SmartAqua smartAqua = SmartAquaFactory.crear("src/test/java/resources/config/loggerNoRegistraActivacionConfig.json");
-        smartAqua.getEvaluadores().forEach(e -> e.agregarObservador(logger));
-        smartAqua.getEvaluadores().forEach(t -> t.evaluar());
+        smartAqua.agregarObservador(logger);
+        smartAqua.evaluarTodos();
 
         List<String> logs = logger.getLogs();
         assertTrue(logs.isEmpty(), "No debe haber activaciones registradas si no hay evaluadores.");

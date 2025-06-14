@@ -12,14 +12,15 @@ public class LoggerActivaciones implements Observer {
     @Override
     public void actualizar(Evaluador evaluador, boolean activaRiego) {
     	String hora = new SimpleDateFormat("HH:mm:ss").format(new Date());
-    	String mensaje = hora + " - " + evaluador.getClass().getSimpleName()
-                + ", Medición: " + evaluador.getUltimaMedicion()
-                + ", Umbral: " + evaluador.getUmbral();
+    	String mensaje = hora + " - Riego activado por " 
+    		    + evaluador.getClass().getSimpleName()
+    		    + " (medición: " + evaluador.getUltimaMedicion()
+    		    + ", umbral: " + evaluador.getUmbral() + ")";
     	if (activaRiego) {
     		logs.add(mensaje);    		
     	}
     }
-    
+
     public List<String> getLogs() {
         return new ArrayList<>(logs);
     }

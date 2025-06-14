@@ -29,7 +29,8 @@ public class SmartAquaFactory {
 
             Aspersor aspersor = new Aspersor();
             AdministradorRiego administrador = new AdministradorRiego(aspersor);
-            return new SmartAqua(evaluadores, administrador, aspersor);
+            RegistradorDeObservadores registrador = new RegistradorDeObservadores(evaluadores);
+            return new SmartAqua(evaluadores, administrador, aspersor, registrador);
 
         } catch (IOException e) {
             throw new RuntimeException("Error al crear SmartAqua desde la configuración", e);
