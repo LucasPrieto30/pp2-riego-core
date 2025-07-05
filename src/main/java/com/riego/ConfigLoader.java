@@ -17,7 +17,7 @@ public class ConfigLoader {
         }
     }
 
-    public String getRutaPlugins() {
+    public String getRutaEvaluadores() {
         return config.getString("ruta_evaluadores");
     }
 

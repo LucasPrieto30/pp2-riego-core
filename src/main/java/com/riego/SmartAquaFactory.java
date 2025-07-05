@@ -8,7 +8,7 @@ public class SmartAquaFactory {
         ConfigLoader configLoader = new ConfigLoader(rutaConfig);
 
         List<Evaluador> evaluadores = EvaluadorInitializer.inicializar(
-                configLoader.getRutaPlugins(),
+                configLoader.getRutaEvaluadores(),
                 configLoader.getUmbrales()
         );
 
